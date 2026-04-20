@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: linear-gradient(135deg, #4c51bf 0%, #6b46c1 100%);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 26px;
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .navbar .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+            padding: 10px;
+            min-width: 220px;
+        }
+
+        .navbar .dropdown-item {
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-weight: 500;
+        }
+
+        .navbar .dropdown-item i {
+            color: #667eea;
+            margin-right: 10px;
+            width: 18px;
+        }
+
+        .navbar .dropdown-item:hover {
+            background: #eef2ff;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #6366f1, #4c51bf);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero .btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            margin: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        .btn-primary-custom {
+            background: white;
+            color: #667eea;
+            border: none;
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(118, 75, 162, 0.4);
+            border: none;
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary-custom:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #764ba2;
+        }
+
+        .stats-section {
+            padding: 60px 0;
+            background: white;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-count {
+            display: block;
+            font-size: 48px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 30px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Login Modal */
+        .login-modal .modal-content {
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .login-modal .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom: none;
+            padding: 24px 28px 18px;
+        }
+
+        .login-modal .modal-body {
+            padding: 28px;
+        }
+
+        .login-role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef2ff;
+            color: #4c51bf;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .login-form .form-control {
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .login-form .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+        }
+
+        .login-submit-btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 18px;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-help-text {
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 14px;
+        }
+
+        .login-switch-btn {
+            background: none;
+            border: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .login-switch-btn:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+
+            .step-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-graduation-cap"></i>
+                Academic Insight
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#features">Features</a>
+                    <a class="nav-link" href="#how-it-works">How It Works</a>
+                    {% if current_user %}
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> {{ current_user.name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="/progress">
+                                        <i class="fas fa-chart-line"></i> My Progress
+                                    </a>
+                                </li>
+                                {% if current_user.role == 'admin' %}
+                                <li>
+                                    <a class="dropdown-item" href="/admin">
+                                        <i class="fas fa-user-shield"></i> Admin Dashboard
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <button class="dropdown-item text-danger" id="navLogoutBtn">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Login
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" data-role="user">
+                                        <i class="fas fa-user"></i> User Login
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" data-role="admin">
+                                        <i class="fas fa-user-shield"></i> Admin Login
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <a class="nav-link" href="/predict">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1200">
+            <h1 data-aos="fade-up" data-aos-delay="200"><i class="fas fa-chart-line"></i> Predict Your Academic Performance</h1>
+            <p data-aos="fade-up" data-aos-delay="400">Advanced ML-powered prediction system to forecast your academic success</p>
+            <p data-aos="fade-up" data-aos-delay="600">Join thousands of students optimizing their study habits with real-time AI insights.</p>
+            <div data-aos="fade-up" data-aos-delay="800">
+                <a href="/predict" class="btn btn-primary-custom pulse-animation">Start Predicting Now</a>
+                <a href="#features" class="btn btn-secondary-custom">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <span class="stat-count" data-count="{{ dataset_count }}">0</span>
+                        <span class="stat-label">Records Analyzed</span>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <span class="stat-count" data-count="98">0</span>
+                        <span class="stat-label">Prediction Accuracy %</span>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <span class="stat-count" data-count="{{ user_count }}">0</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>Why Choose Our Predictor?</h2>
+                <p>Experience accurate predictions with our state-of-the-art machine learning models</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-Powered</h3>
+                        <p>Advanced machine learning algorithms trained on thousands of student records for accurate predictions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Instant Results</h3>
+                        <p>Get real-time predictions in seconds. No waiting, just accurate math score forecasts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Actionable Insights</h3>
+                        <p>Receive personalized AI-driven feedback and study recommendations to help improve your academic performance.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Easy to Use</h3>
+                        <p>Simple, intuitive interface that anyone can use. No technical knowledge required.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Data-Driven</h3>
+                        <p>Based on comprehensive analysis of student demographics and academic performance.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Always Available</h3>
+                        <p>Access our prediction system 24/7. Get predictions whenever you need them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="steps-container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Three simple steps to get your prediction</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Fill Your Profile</h4>
+                            <p>Answer simple questions about your demographics, education background, and previous scores.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Submit Data</h4>
+                            <p>Click the predict button and let our AI analyze your information using advanced algorithms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Get Results</h4>
+                            <p>Receive your predicted Academic Performance instantly with detailed insights about your performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Predict Your Academic Performance?</h2>
+        <p>Start using our powerful prediction system today</p>
+        <a href="/predict" class="cta-btn">Get Started Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/predict">Predictor</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>&copy; 2026 Student Performance Prediction System. All Rights Reserved.</p>
+        <small>Powered by Machine Learning | Academic Excellence Predicted</small>
+    </footer>
+
+    <div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title mb-1" id="loginModalLabel">Login</h5>
+                        <p class="mb-0 opacity-75">Access your dashboard securely.</p>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-role-badge" id="loginRoleBadge">
+                        <i class="fas fa-user"></i>
+                        <span>User Login</span>
+                    </div>
+                    <div class="alert d-none" id="loginAlert" role="alert"></div>
+                    <form class="login-form" id="loginForm">
+                        <input type="hidden" id="loginRole" value="user">
+                        <input type="hidden" id="loginMode" value="login">
+                        <div class="mb-3 d-none" id="signUpNameGroup">
+                            <label for="signUpName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                        </div>
+                        <div class="mb-3 d-none" id="confirmPasswordGroup">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter your password">
+                        </div>
+                        <button type="submit" class="login-submit-btn" id="loginSubmitBtn">Login as User</button>
+                        <p class="login-help-text mb-0" id="loginHelpText">
+                            Use your student account to access predictions and track performance.
+                        </p>
+                        <p class="login-help-text mb-0" id="loginSwitchWrapper">
+                            New student here?
+                            <button type="button" class="login-switch-btn" id="loginSwitchBtn">Create an account</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Stats Counter Animation
+        const stats = document.querySelectorAll('.stat-count');
+        const countSpeed = 2000;
+
+        const startCounting = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const countTo = parseInt(target.getAttribute('data-count'));
+                    let currentCount = 0;
+                    const increment = Math.ceil(countTo / (countSpeed / 16));
+                    
+                    const timer = setInterval(() => {
+                        currentCount += increment;
+                        if (currentCount >= countTo) {
+                            target.innerText = countTo.toLocaleString();
+                            clearInterval(timer);
+                        } else {
+                            target.innerText = Math.floor(currentCount).toLocaleString();
+                        }
+                    }, 16);
+                    observer.unobserve(target);
+                }
+            });
+        };
+
+        const countObserver = new IntersectionObserver(startCounting, { threshold: 0.5 });
+        stats.forEach(stat => countObserver.observe(stat));
+
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        // ... (rest of the existing script logic)
+        const loginRoleInput = document.getElementById('loginRole');
+        const loginModeInput = document.getElementById('loginMode');
+        const loginModalLabel = document.getElementById('loginModalLabel');
+        const loginRoleBadge = document.getElementById('loginRoleBadge');
+        const loginSubmitBtn = document.getElementById('loginSubmitBtn');
+        const loginHelpText = document.getElementById('loginHelpText');
+        const loginSwitchWrapper = document.getElementById('loginSwitchWrapper');
+        const loginAlert = document.getElementById('loginAlert');
+
+        // Auto-open modal if URL has parameter
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const showAdmin = urlParams.get('show_admin_login');
+            const showUser = urlParams.get('show_user_login');
+
+            if (showAdmin === 'true') {
+                document.querySelector('[data-role="admin"]').click();
+            } else if (showUser === 'true') {
+                document.querySelector('[data-role="user"]').click();
+            }
+        });
+        const signUpNameGroup = document.getElementById('signUpNameGroup');
+        const signUpName = document.getElementById('signUpName');
+        const loginEmail = document.getElementById('loginEmail');
+        const loginPassword = document.getElementById('loginPassword');
+        const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+        const confirmPassword = document.getElementById('confirmPassword');
+
+        const roleConfig = {
+            user: {
+                title: 'User Login',
+                icon: 'fas fa-user',
+                button: 'Login as User',
+                help: 'Use your student account to access predictions and track performance.',
+                success: 'User login successful. Redirecting to the prediction page...',
+                signupTitle: 'User Sign Up',
+                signupButton: 'Create User Account',
+                signupHelp: 'Create your student account to start using predictions and progress tracking.',
+                signupSuccess: 'Account created successfully. Redirecting to the prediction page...'
+            },
+            admin: {
+                title: 'Admin Login',
+                icon: 'fas fa-user-shield',
+                button: 'Login as Admin',
+                help: 'Admin access lets you manage reports, users, and system activity.',
+                success: 'Admin login successful. Admin session is now active.'
+            }
+        };
+
+        function showLoginAlert(message, type) {
+            loginAlert.className = 'alert alert-' + type;
+            loginAlert.textContent = message;
+        }
+
+        function setLoginMode(mode) {
+            const role = loginRoleInput.value;
+            const config = roleConfig[role] || roleConfig.user;
+            const isSignUp = role === 'user' && mode === 'signup';
+
+            loginModeInput.value = isSignUp ? 'signup' : 'login';
+            signUpNameGroup.classList.toggle('d-none', !isSignUp);
+            confirmPasswordGroup.classList.toggle('d-none', !isSignUp);
+            signUpName.required = isSignUp;
+            confirmPassword.required = isSignUp;
+
+            if (isSignUp) {
+                loginModalLabel.textContent = config.signupTitle;
+                loginRoleBadge.innerHTML = '<i class="' + config.icon + '"></i><span>' + config.signupTitle + '</span>';
+                loginSubmitBtn.textContent = config.signupButton;
+                loginHelpText.textContent = config.signupHelp;
+                loginSwitchWrapper.innerHTML = 'Already have an account? <button type="button" class="login-switch-btn" id="loginSwitchBtn">Back to login</button>';
+            } else {
+                loginModalLabel.textContent = config.title;
+                loginRoleBadge.innerHTML = '<i class="' + config.icon + '"></i><span>' + config.title + '</span>';
+                loginSubmitBtn.textContent = config.button;
+                loginHelpText.textContent = config.help;
+
+                if (role === 'user') {
+                    loginSwitchWrapper.innerHTML = 'New student here? <button type="button" class="login-switch-btn" id="loginSwitchBtn">Create an account</button>';
+                } else {
+                    loginSwitchWrapper.textContent = 'Admin login is restricted to authorized staff accounts.';
+                }
+            }
+
+            attachSwitchHandler();
+        }
+
+        function attachSwitchHandler() {
+            const switchBtn = document.getElementById('loginSwitchBtn');
+
+            if (!switchBtn) {
+                return;
+            }
+
+            switchBtn.addEventListener('click', function () {
+                const nextMode = loginModeInput.value === 'login' ? 'signup' : 'login';
+                setLoginMode(nextMode);
+                loginAlert.className = 'alert d-none';
+                loginAlert.textContent = '';
+            });
+        }
+
+        function setLoginRole(role) {
+            const config = roleConfig[role] || roleConfig.user;
+            loginRoleInput.value = role;
+            loginAlert.className = 'alert d-none';
+            loginAlert.textContent = '';
+            setLoginMode('login');
+        }
+
+        loginModal.addEventListener('show.bs.modal', function (event) {
+            const trigger = event.relatedTarget;
+            const role = trigger && trigger.getAttribute('data-role') ? trigger.getAttribute('data-role') : 'user';
+            loginForm.reset();
+            setLoginRole(role);
+        });
+
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const role = loginRoleInput.value;
+            const mode = loginModeInput.value;
+            const fullName = signUpName.value.trim();
+            const email = loginEmail.value.trim();
+            const password = loginPassword.value.trim();
+            const confirmedPassword = confirmPassword.value.trim();
+
+            if (!email || !password) {
+                showLoginAlert('Please enter both email and password.', 'danger');
+                return;
+            }
+
+            if (password.length < 6) {
+                showLoginAlert('Password must be at least 6 characters long.', 'danger');
+                return;
+            }
+
+            if (role === 'user' && mode === 'signup') {
+                if (!fullName) {
+                    showLoginAlert('Please enter your full name to create an account.', 'danger');
+                    return;
+                }
+
+                if (password !== confirmedPassword) {
+                    showLoginAlert('Passwords do not match. Please re-enter them.', 'danger');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/auth', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            role: role,
+                            mode: mode,
+                            name: fullName,
+                            email: email,
+                            password: password
+                        })
+                    });
+                    const result = await response.json();
+
+                    if (!response.ok || !result.success) {
+                        showLoginAlert(result.message || 'Signup failed.', 'danger');
+                        return;
+                    }
+
+                    showLoginAlert(result.message, 'success');
+                    setTimeout(function () {
+                        window.location.href = result.redirect_url;
+                    }, 900);
+                } catch (error) {
+                    showLoginAlert('Unable to connect to the server right now.', 'danger');
+                }
+                return;
+            }
+
+            if (role === 'admin' && !email.toLowerCase().includes('admin')) {
+                showLoginAlert('Admin login requires an email containing "admin".', 'warning');
+                return;
+            }
+
+            try {
+                const response = await fetch('/auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        role: role,
+                        mode: mode,
+                        email: email,
+                        password: password
+                    })
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    showLoginAlert(result.message || 'Login failed.', 'danger');
+                    return;
+                }
+
+                showLoginAlert(result.message, 'success');
+                if (result.redirect_url) {
+                    setTimeout(function () {
+                        window.location.href = result.redirect_url;
+                    }, 900);
+                }
+            } catch (error) {
+                showLoginAlert('Unable to connect to the server right now.', 'danger');
+            }
+        });
+
+        const navLogoutBtn = document.getElementById('navLogoutBtn');
+        if (navLogoutBtn) {
+            navLogoutBtn.addEventListener('click', async function () {
+                await fetch('/logout', { method: 'POST' });
+                window.location.href = '/';
+            });
+        }
+    </script>
+</body>
+</html>

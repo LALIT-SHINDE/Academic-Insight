@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1f2937;
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .predict-card {
+            width: 100%;
+            max-width: 1080px;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(79, 70, 229, 0.16);
+        }
+
+        .predict-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+        }
+
+        .predict-intro {
+            background: linear-gradient(160deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .predict-intro h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .predict-intro p {
+            font-size: 17px;
+            line-height: 1.7;
+            opacity: 0.94;
+            margin-bottom: 28px;
+        }
+
+        .intro-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .intro-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        .intro-list i {
+            width: 22px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            padding: 10px 16px;
+            width: fit-content;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #e0e7ff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.55);
+        }
+
+        .predict-form-panel {
+            padding: 44px 40px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .predict-form-panel h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .predict-form-panel .subtitle {
+            color: #6b7280;
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border-radius: 14px;
+            padding: 14px 16px;
+            border: 1px solid #dbe3f0;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.14);
+        }
+
+        .field-note {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            border-radius: 14px;
+            padding: 15px 18px;
+            font-size: 17px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(102, 126, 234, 0.24);
+        }
+
+        .result-box {
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .result-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .result-box p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        .meta-card {
+            margin-top: 22px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .meta-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .meta-card p {
+            margin: 0 0 8px;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            margin-top: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-weight: 600;
+        }
+
+        .history-card {
+            margin-top: 24px;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .history-card h3 {
+            font-size: 18px;
+            margin: 0;
+            padding: 16px 18px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #eef2f7;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .history-empty {
+            padding: 16px 18px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .predict-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .predict-intro,
+            .predict-form-panel {
+                padding: 32px 24px;
+            }
+
+            .predict-intro h1 {
+                font-size: 34px;
+            }
+        }
+    <style>
+        /* Navbar from index.html */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 26px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-graduation-cap"></i>
+                Academic Insight
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                <a class="nav-link" href="/progress"><i class="fas fa-chart-line me-1"></i> My Progress</a>
+                {% if current_user and current_user.role == 'admin' %}
+                <a class="nav-link" href="/admin"><i class="fas fa-user-shield me-1"></i> Admin</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="page-shell">
+        <div class="predict-card">
+            <div class="predict-layout">
+                <section class="predict-intro">
+                    <div>
+                        <div class="section-badge">
+                            <i class="fas fa-chart-line"></i>
+                            Prediction Dashboard
+                        </div>
+                        <h1>Predict Student Performance With Key Academic Inputs</h1>
+                        <p>Enter the student's attendance, internal marks, assignment progress, and study hours to generate a performance prediction.</p>
+                        <ul class="intro-list">
+                            <li><i class="fas fa-check-circle"></i> Attendance percentage for class participation</li>
+                            <li><i class="fas fa-check-circle"></i> Mid marks from internal exams</li>
+                            <li><i class="fas fa-check-circle"></i> Assignment score or completion marks</li>
+                            <li><i class="fas fa-check-circle"></i> Study hours per day for learning effort</li>
+                        </ul>
+                        <div class="meta-card">
+                            <h3>Signed In</h3>
+                            {% if current_user %}
+                                <p><strong>{{ current_user.name }}</strong></p>
+                                <p>{{ current_user.email }}</p>
+                                <p>Predictions from this page are stored and can be tracked in your progress dashboard.</p>
+                                <a href="/progress" class="btn btn-sm btn-outline-light mt-2" style="border-radius: 8px;">
+                                    <i class="fas fa-history me-1"></i> View My Progress
+                                </a>
+                            {% else %}
+                                <p><strong>Guest Mode</strong></p>
+                                <p>Login to save your results and track progress over time.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="/" class="back-link" style="margin-top: 0;">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Home
+                        </a>
+                        <button type="button" class="logout-btn" id="logoutBtn" style="margin-top: 0;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </section>
+
+                <section class="predict-form-panel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="section-badge" style="margin-bottom: 0;">
+                            <i class="fas fa-user-graduate"></i>
+                            Student Input Form
+                        </div>
+                        <div class="section-badge" style="background: #ffffff; color: #4f46e5; padding: 8px 24px; font-size: 18px; border: 2px solid #eef2ff; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); font-weight: 800; margin-bottom: 0;">
+                            <i class="fas fa-university me-2"></i>
+                            MCA
+                        </div>
+                    </div>
+                    <h2>Enter Prediction Details</h2>
+                    <p class="subtitle">Fill in the academic details below and submit the form to predict performance.</p>
+
+                    <form action="/predict" method="POST">
+                        <div class="mb-3">
+                            <label for="student_name" class="form-label">Student Name</label>
+                            <input type="text" class="form-control" id="student_name" name="student_name" placeholder="Example: Aarav Sharma" required>
+                            <div class="field-note">This record name will be saved in the database history.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="semester" class="form-label">Semester</label>
+                            <select class="form-control form-select" id="semester" name="semester" required>
+                                <option value="" disabled selected>Select a semester</option>
+                                <option value="SEM I">SEM I</option>
+                                <option value="SEM II">SEM II</option>
+                                <option value="SEM III">SEM III</option>
+                                <option value="SEM IV">SEM IV</option>
+                            </select>
+                            <div class="field-note">Select the academic semester for prediction.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select class="form-control form-select" id="subject" name="subject" required>
+                                <option value="" disabled selected>Please select a semester first</option>
+                            </select>
+                            <div class="field-note">Choose the subject for which you want to predict performance.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="attendance" class="form-label">Attendance (%)</label>
+                            <input type="number" class="form-control" id="attendance" name="attendance" min="0" max="100" step="0.01" placeholder="Example: 92" required>
+                            <div class="field-note">Enter the student attendance percentage between 0 and 100.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mid_marks" class="form-label">Mid Marks</label>
+                            <input type="number" class="form-control" id="mid_marks" name="mid_marks" min="0" max="100" step="0.01" placeholder="Example: 78" required>
+                            <div class="field-note">Provide the internal or mid-exam marks.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="assignments" class="form-label">Assignments</label>
+                            <input type="number" class="form-control" id="assignments" name="assignments" min="0" max="100" step="0.01" placeholder="Example: 85" required>
+                            <div class="field-note">Enter the assignment marks or completion score.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="study_hours" class="form-label">Study Hours</label>
+                            <input type="number" class="form-control" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="Example: 4.5" required>
+                            <div class="field-note">Average study hours per day.</div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Predict Performance</button>
+                    </form>
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        const logoutBtn = document.getElementById('logoutBtn');
+        logoutBtn.addEventListener('click', async function () {
+            await fetch('/logout', { method: 'POST' });
+            window.location.href = '/';
+        });
+
+        // Dynamic Subject Loading based on Semester
+        const semesterSelect = document.getElementById('semester');
+        const subjectSelect = document.getElementById('subject');
+
+        const semesterSubjects = {
+            'SEM I': [
+                'Mathematical foundation for Computer Applications',
+                'Data Structures and Algorithms',
+                'Object Oriented Programming',
+                'Research Methodology',
+                'Elective I - Artificial Intelligence'
+            ],
+            'SEM II': [
+                'Operating System and Network Fundamentals',
+                'Database Management System',
+                'Software Engineering and Project Management',
+                'Java and Advance Java Programming',
+                'Elective II - Machine Learning',
+                'Elective II - Internet of Things'
+            ],
+            'SEM III': [
+                'Software Engineering',
+                'Web Technologies',
+                'Data Warehousing and Data Mining',
+                'Artificial Intelligence / Machine Learning',
+                'Cloud Computing'
+            ],
+            'SEM IV': [
+                'Big Data Analytics',
+                'Cyber Security',
+                'Cloud Computing',
+                'Internet of Things (IoT)',
+                'Major Project / Dissertation'
+            ]
+        };
+
+        semesterSelect.addEventListener('change', function() {
+            const selectedSem = this.value;
+            const subjects = semesterSubjects[selectedSem] || [];
+            
+            // Clear existing options except the first one
+            subjectSelect.innerHTML = '<option value="" disabled selected>Select a subject</option>';
+            
+            // Add new options
+            subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.textContent = subject;
+                subjectSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>

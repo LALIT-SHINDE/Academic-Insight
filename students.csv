@@ -1,0 +1,151 @@
+student_id,name,attendance,mid_marks,assignments,study_hours,performance_label
+S001,Aarav Sharma,92,88,90,6.0,Excellent
+S002,Diya Reddy,85,78,80,5.0,Good
+S003,Vihaan Kumar,68,60,62,3.0,Average
+S004,Anaya Patel,50,45,48,1.5,Needs Improvement
+S005,Ishaan Verma,89,84,82,5.5,Good
+S006,Rohan Gupta,95,90,92,6.5,Excellent
+S007,Meera Nair,72,68,70,4.0,Good
+S008,Arjun Singh,60,55,58,2.5,Average
+S009,Kavya Iyer,48,42,45,1.2,Needs Improvement
+S010,Aditya Mehta,88,82,85,5.8,Good
+S011,Sneha Joshi,93,89,91,6.2,Excellent
+S012,Karan Malhotra,70,65,68,3.8,Average
+S013,Pooja Shah,80,75,78,4.5,Good
+S014,Rahul Choudhary,55,50,52,2.0,Needs Improvement
+S015,Neha Kapoor,91,87,89,6.0,Excellent
+S016,Varun Bansal,77,72,74,4.2,Good
+S017,Tanvi Desai,65,60,63,3.0,Average
+S018,Amit Yadav,52,48,50,1.8,Needs Improvement
+S019,Ritika Jain,90,85,88,5.9,Excellent
+S020,Saurabh Mishra,82,78,80,4.8,Good
+S021,Nisha Kulkarni,68,63,65,3.5,Average
+S022,Deepak Verma,58,52,55,2.3,Needs Improvement
+S023,Ankit Srivastava,94,91,93,6.3,Excellent
+S024,Shreya Ghosh,86,80,83,5.2,Good
+S025,Manish Tiwari,66,60,62,3.2,Average
+S026,Preeti Agarwal,49,44,46,1.4,Needs Improvement
+S027,Harsh Vardhan,89,84,86,5.6,Good
+S028,Simran Kaur,92,88,90,6.1,Excellent
+S029,Rajesh Kumar,73,68,70,4.1,Good
+S030,Komal Singh,61,56,58,2.6,Average
+S031,Vikas Sharma,53,48,50,1.9,Needs Improvement
+S032,Anjali Verma,90,86,88,5.9,Excellent
+S033,Ashish Gupta,81,76,79,4.7,Good
+S034,Divya Nair,67,62,64,3.3,Average
+S035,Ramesh Patel,50,45,47,1.6,Needs Improvement
+S036,Siddharth Jain,93,89,92,6.4,Excellent
+S037,Kritika Mehta,85,80,82,5.3,Good
+S038,Rohit Yadav,64,59,61,3.1,Average
+S039,Geeta Sharma,55,50,52,2.1,Needs Improvement
+S040,Abhishek Singh,91,87,89,6.0,Excellent
+S041,Sonal Gupta,79,74,77,4.4,Good
+S042,Nitin Verma,68,63,65,3.4,Average
+S043,Kiran Rao,52,47,49,1.7,Needs Improvement
+S044,Prakash Iyer,94,90,93,6.3,Excellent
+S045,Rekha Pillai,87,82,85,5.5,Good
+S046,Aman Khanna,62,57,59,2.7,Average
+S047,Sunita Yadav,49,44,46,1.3,Needs Improvement
+S048,Akash Srivastava,92,88,91,6.2,Excellent
+S049,Priya Desai,84,79,82,5.1,Good
+S050,Alok Mishra,66,61,63,3.2,Average
+S051,Rahul Verma,91,87,89,6.0,Excellent
+S052,Neha Sharma,83,78,80,5.0,Good
+S053,Amit Kumar,67,60,62,3.1,Average
+S054,Priya Singh,52,47,49,1.8,Needs Improvement
+S055,Kunal Mehta,88,83,85,5.6,Good
+S056,Anjali Gupta,95,91,93,6.5,Excellent
+S057,Rohit Sharma,74,69,71,4.2,Good
+S058,Kavita Joshi,63,58,60,2.9,Average
+S059,Deepak Yadav,50,45,47,1.6,Needs Improvement
+S060,Sneha Kapoor,92,88,90,6.1,Excellent
+S061,Vikas Jain,81,76,79,4.7,Good
+S062,Simran Arora,69,64,66,3.4,Average
+S063,Manoj Mishra,55,50,52,2.0,Needs Improvement
+S064,Pooja Verma,90,85,88,5.9,Excellent
+S065,Aditya Sharma,84,79,82,5.1,Good
+S066,Meena Iyer,66,61,63,3.2,Average
+S067,Suresh Patel,53,48,50,1.9,Needs Improvement
+S068,Ankit Singh,93,89,92,6.3,Excellent
+S069,Divya Shah,85,80,83,5.3,Good
+S070,Rajesh Singh,68,63,65,3.5,Average
+S071,Geeta Nair,51,46,48,1.7,Needs Improvement
+S072,Harsh Gupta,91,87,89,6.0,Excellent
+S073,Komal Verma,82,77,80,4.9,Good
+S074,Alok Yadav,64,59,61,3.0,Average
+S075,Rina Patel,54,49,51,2.0,Needs Improvement
+S076,Prakash Singh,94,90,93,6.4,Excellent
+S077,Nisha Jain,86,81,84,5.4,Good
+S078,Ashok Kumar,67,62,64,3.3,Average
+S079,Suman Sharma,52,47,49,1.8,Needs Improvement
+S080,Aman Verma,92,88,91,6.2,Excellent
+S081,Kiran Yadav,80,75,78,4.6,Good
+S082,Rohini Iyer,69,64,66,3.4,Average
+S083,Sunil Mishra,55,50,52,2.1,Needs Improvement
+S084,Preeti Gupta,90,86,88,5.8,Excellent
+S085,Vinay Singh,83,78,81,5.0,Good
+S086,Anu Sharma,66,61,63,3.1,Average
+S087,Rakesh Patel,53,48,50,1.9,Needs Improvement
+S088,Kriti Mehta,93,89,91,6.3,Excellent
+S089,Deepa Nair,85,80,82,5.2,Good
+S090,Mukesh Kumar,68,63,65,3.4,Average
+S091,Sarla Yadav,51,46,48,1.7,Needs Improvement
+S092,Abhishek Verma,91,87,89,6.0,Excellent
+S093,Reena Shah,82,77,79,4.8,Good
+S094,Naresh Verma,64,59,61,3.0,Average
+S095,Pallavi Joshi,54,49,51,2.0,Needs Improvement
+S096,Sachin Gupta,94,90,93,6.4,Excellent
+S097,Anita Sharma,86,81,84,5.4,Good
+S098,Ravi Yadav,67,62,64,3.3,Average
+S099,Kusum Patel,52,47,49,1.8,Needs Improvement
+S100,Rohan Mehta,92,88,90,6.1,Excellent
+S101,Aarohi Deshmukh,93,89,91,6.2,Excellent
+S102,Rajat Saxena,84,79,82,5.1,Good
+S103,Neeraj Singh,67,62,64,3.2,Average
+S104,Priyanka Chatterjee,53,48,50,1.9,Needs Improvement
+S105,Harshit Arora,89,84,86,5.6,Good
+S106,Swati Kulkarni,95,91,94,6.5,Excellent
+S107,Ayush Tiwari,75,70,72,4.3,Good
+S108,Shalini Nair,64,59,61,3.0,Average
+S109,Devendra Yadav,50,45,47,1.6,Needs Improvement
+S110,Riya Kapoor,92,88,90,6.1,Excellent
+S111,Manav Gupta,82,77,79,4.8,Good
+S112,Shruti Jain,69,64,66,3.4,Average
+S113,Pradeep Mishra,55,50,52,2.0,Needs Improvement
+S114,Neha Agarwal,90,86,88,5.8,Excellent
+S115,Aakash Sharma,83,78,80,5.0,Good
+S116,Megha Iyer,66,61,63,3.1,Average
+S117,Ramesh Yadav,53,48,50,1.9,Needs Improvement
+S118,Kartik Singh,93,89,92,6.3,Excellent
+S119,Divyanshi Shah,85,80,83,5.3,Good
+S120,Santosh Kumar,68,63,65,3.4,Average
+S121,Lata Nair,51,46,48,1.7,Needs Improvement
+S122,Anurag Verma,91,87,89,6.0,Excellent
+S123,Komal Saxena,82,77,80,4.9,Good
+S124,Vinod Yadav,64,59,61,3.0,Average
+S125,Sarika Patel,54,49,51,2.0,Needs Improvement
+S126,Nikhil Mehta,94,90,93,6.4,Excellent
+S127,Pallavi Gupta,86,81,84,5.4,Good
+S128,Rohit Choudhary,67,62,64,3.3,Average
+S129,Suman Verma,52,47,49,1.8,Needs Improvement
+S130,Adarsh Singh,92,88,91,6.2,Excellent
+S131,Rekha Verma,80,75,78,4.6,Good
+S132,Deepak Nair,69,64,66,3.4,Average
+S133,Om Prakash,55,50,52,2.1,Needs Improvement
+S134,Pooja Mishra,90,86,88,5.8,Excellent
+S135,Rajiv Kumar,83,78,81,5.0,Good
+S136,Kavya Nair,66,61,63,3.1,Average
+S137,Sunil Patel,53,48,50,1.9,Needs Improvement
+S138,Siddharth Jain,93,89,91,6.3,Excellent
+S139,Aarti Shah,85,80,82,5.2,Good
+S140,Rakesh Gupta,68,63,65,3.4,Average
+S141,Seema Yadav,51,46,48,1.7,Needs Improvement
+S142,Abhay Singh,91,87,89,6.0,Excellent
+S143,Neelam Verma,82,77,79,4.8,Good
+S144,Arvind Kumar,64,59,61,3.0,Average
+S145,Shobha Patel,54,49,51,2.0,Needs Improvement
+S146,Pranav Mehta,94,90,93,6.4,Excellent
+S147,Ankita Gupta,86,81,84,5.4,Good
+S148,Ravi Shankar,67,62,64,3.3,Average
+S149,Kusum Yadav,52,47,49,1.8,Needs Improvement
+S150,Rohan Kapoor,92,88,90,6.1,Excellent
