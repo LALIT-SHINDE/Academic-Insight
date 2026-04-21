@@ -32,5 +32,4 @@ This is a student academic analysis system built using Python and Flask.
 - templates/ → HTML files
 - static/ → CSS/JS
 
-👨‍💻 Author
-Lalit Shinde
+👨‍💻 Author: Lalit Shinde
