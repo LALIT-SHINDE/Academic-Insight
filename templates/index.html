@@ -1060,6 +1060,12 @@
             loginAlert.className = 'alert d-none';
             loginAlert.textContent = '';
             setLoginMode('login');
+        
+            // Show Google Sign-In only for user role, not admin
+            const googleSection = document.getElementById('googleSignInSection');
+            if (googleSection) {
+                googleSection.style.display = role === 'user' ? 'block' : 'none';
+            }
         }
 
         loginModal.addEventListener('show.bs.modal', function (event) {
