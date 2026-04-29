@@ -847,7 +847,62 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Init AOS
+            // ── Google Sign-In ──────────────────────────────────────────
+        const GOOGLE_CLIENT_ID = '{{ google_client_id }}';
+
+        function initGoogleSignIn() {
+            if (typeof google === 'undefined' || !google.accounts) {
+                // GSI library not loaded yet — retry after a short delay
+                setTimeout(initGoogleSignIn, 300);
+                return;
+            }
+            google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: handleGoogleCredential,
+                auto_select: false,
+            });
+        }
+
+        async function handleGoogleCredential(response) {
+            const loginAlert = document.getElementById('loginAlert');
+
+            try {
+                const res = await fetch('/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: response.credential }),
+                });
+                const result = await res.json();
+
+                if (!res.ok || !result.success) {
+                    loginAlert.className = 'alert alert-danger';
+                    loginAlert.textContent = result.message || 'Google sign-in failed.';
+                    return;
+                }
+
+                loginAlert.className = 'alert alert-success';
+                loginAlert.textContent = result.message;
+                setTimeout(() => { window.location.href = result.redirect_url; }, 800);
+            } catch (err) {
+                loginAlert.className = 'alert alert-danger';
+                loginAlert.textContent = 'Unable to sign in with Google right now.';
+            }
+        }
+
+        // Trigger Google One-Tap / popup when the custom button is clicked
+        document.addEventListener('DOMContentLoaded', function () {
+            initGoogleSignIn();
+
+            const googleBtn = document.getElementById('googleSignInBtn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', function () {
+                    google.accounts.id.prompt(); // shows Google One-Tap popup
+                });
+            }
+        });
+        // ────────────────────────────────────────────────────────────
+
+ 
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
