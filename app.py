@@ -1,27 +1,14 @@
 import csv
 import pickle
-import os
 import sqlite3
 from pathlib import Path
 
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
-from google.auth.transport import requests as google_requests
-from google.oauth2 import id_token as google_id_token
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "student-performance-secret-key"
-
-# ──────────────────────────────────────────────────────────────────────
-# Google Sign-In Configuration
-# Replace the value below with your own Google OAuth Client ID.
-# Get one at: https://console.cloud.google.com/apis/credentials
-# ──────────────────────────────────────────────────────────────────────
-GOOGLE_CLIENT_ID = os.environ.get(
-    "GOOGLE_CLIENT_ID",
-    "YOUR_GOOGLE_CLIENT_ID_HERE"  # ← Replace this with your real Client ID
-)
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "model.pkl"
@@ -517,7 +504,6 @@ def home():
         current_user=user,
         dataset_count=get_dataset_count(),
         user_count=get_user_count(),
-        google_client_id=GOOGLE_CLIENT_ID,
     )
 
 
@@ -577,69 +563,6 @@ def auth():
     redirect_url = url_for("predict") if role == "user" else url_for("admin_dashboard")
     success_message = "Account created successfully." if mode == "signup" else "Login successful."
     return jsonify({"success": True, "message": success_message, "redirect_url": redirect_url})
-
-@app.route("/auth/google", methods=["POST"])
-def auth_google():
-    """Handle Google Sign-In: verify ID token, create or login user."""
-    data = request.get_json(silent=True) or {}
-    credential = data.get("credential", "")
-
-    if not credential:
-        return jsonify({"success": False, "message": "No credential received from Google."}), 400
-
-    try:
-        # Verify the Google ID token
-        id_info = google_id_token.verify_oauth2_token(
-            credential,
-            google_requests.Request(),
-            GOOGLE_CLIENT_ID,
-        )
-
-        # Extract user info from verified token
-        google_email = id_info.get("email", "").strip().lower()
-        google_name = id_info.get("name", "").strip() or "Google User"
-        email_verified = id_info.get("email_verified", False)
-
-        if not google_email or not email_verified:
-            return jsonify({"success": False, "message": "Google account email not verified."}), 400
-
-    except ValueError:
-        return jsonify({"success": False, "message": "Invalid Google credential. Please try again."}), 401
-
-    # Check if user already exists
-    with get_db_connection() as connection:
-        existing_user = connection.execute(
-            "SELECT * FROM users WHERE email = ?",
-            (google_email,),
-        ).fetchone()
-
-        if existing_user:
-            user_id = existing_user["id"]
-            user_name = existing_user["name"]
-            user_role = existing_user["role"]
-        else:
-            # Auto-create a new user account
-            cursor = connection.execute(
-                "INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)",
-                (google_name, google_email, generate_password_hash(os.urandom(32).hex()), "user"),
-            )
-            connection.commit()
-            user_id = cursor.lastrowid
-            user_name = google_name
-            user_role = "user"
-
-    # Set session
-    session["user_id"] = user_id
-    session["user_role"] = user_role
-    session["user_name"] = user_name
-    session["user_email"] = google_email
-
-    redirect_url = url_for("predict") if user_role == "user" else url_for("admin_dashboard")
-    return jsonify({
-        "success": True,
-        "message": f"Welcome, {user_name}! Signed in with Google.",
-        "redirect_url": redirect_url,
-    })
 
 
 @app.route("/logout", methods=["POST"])
