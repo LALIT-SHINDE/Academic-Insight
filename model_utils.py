@@ -34,6 +34,7 @@ class StudentPerformanceKNN:
         distances.sort(key=lambda item: item[0])
         nearest = distances[: self.neighbors]
 
+
         votes: dict[int, int] = {}
         for _, label in nearest:
             votes[label] = votes.get(label, 0) + 1
