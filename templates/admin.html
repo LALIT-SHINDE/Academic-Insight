@@ -192,26 +192,10 @@
             color: #64748b;
         }
 
-        /* Dark mode */
+        /* Light mode toggle override */
         body.dark-mode {
-            background: linear-gradient(135deg, #1e1b4b 0%, #0f0f23 100%);
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .stat-card,
-        body.dark-mode .table-card {
-            background: #1e293b;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode th {
-            background: #334155;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .status-chip {
-            background: #475569;
-            color: #e2e8f0;
+            background: #f1f5f9;
+            color: #1f2937;
         }
 
         /* Charts */
@@ -383,9 +367,15 @@
             <section class="hero">
                 <div class="hero-top">
                     <div>
-                        <div class="badge-pill">
-                            <i class="fas fa-user-shield"></i>
-                            Admin Console
+                        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 18px;">
+                            <div class="badge-pill" style="margin-bottom: 0;">
+                                <i class="fas fa-user-shield"></i>
+                                Admin Console
+                            </div>
+                            <div class="badge-pill" style="background: white; color: #4f46e5; margin-bottom: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                                <i class="fas fa-university"></i>
+                                MCA
+                            </div>
                         </div>
                         <h1>Student Prediction Records</h1>
                         <p>Review every saved prediction made by logged-in users. This dashboard is restricted to admin accounts and reads data directly from the backend database.</p>
